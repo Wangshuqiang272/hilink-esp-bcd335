@@ -287,7 +287,7 @@ void uart_init_new(void);
   *  
   * @return  null
   */
-void printf16(char* start, int len);
+void printf16(uint8* start, int len);
 
 /**
   * @brief   send data[] to mcu by uart0.

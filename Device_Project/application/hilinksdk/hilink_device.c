@@ -157,9 +157,9 @@ int handle_refrigerateSwitch_cmd(bool *on)
 		else
 	         g_send_data[1] = 0x00;                 //下发命令为 0 -> 默认手动模式 Add by wangshuqiang @2021-2-18
 		}
-    //printf("Lidongdong:handle_refrigerateSwitch_cmd uart0_send_data()\r\n");    //Lidongdong add @2021-1-27.
+    
 	uart0_send_data(g_send_data,sizeof(g_send_data));//Add by lidongdong  @2021-02-5 end.
-    //printf(" [Test wangshuqiang   hahhaha ] bit->1   data -> %02X",g_send_data[1]);    
+	//printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;
@@ -186,7 +186,7 @@ int handle_freezeSwitch_cmd(bool *on)
 			g_send_data[1] = 0x00;
     }
 	uart0_send_data(g_send_data,sizeof(g_send_data));//Add by lidongdong  @2021-02-5 end.
-    //printf(" [Test wangshuqiang   hahhaha ] bit->1   data -> %02X",g_send_data[1]);
+	//printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;
@@ -213,7 +213,7 @@ int handle_intelligentSwitch_cmd(bool *on)
 			g_send_data[1] = 0x00;
     }
 	uart0_send_data(g_send_data,sizeof(g_send_data));//Add by lidongdong  @2021-02-5 end.
-	//printf(" [Test wangshuqiang   hahhaha ] bit->1   data -> %02X",g_send_data[1]);
+	//printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;
@@ -237,7 +237,7 @@ int handle_refrigerator_cmd(int *target)
         /* 请在此处实现设备状态改变的操作 */
     }
 	uart0_send_data(g_send_data,sizeof(g_send_data));//Add by lidongdong  @2021-02-5 end.
-	//printf(" [Test wangshuqiang   hahhaha ] bit->2   data -> %02X",g_send_data[2]);
+	//printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;
@@ -261,8 +261,7 @@ int handle_freezer_cmd(int *target)
 		g_send_data[4] = (char)((*target)*2+100);  //将App下发的控制温度数值经过公式转化为串口通信数值后强制转换为字符型数值 Add by wangshuqiang @2021-2-18
     }
 	uart0_send_data(g_send_data,sizeof(g_send_data));
-	//printf(" [Test wangshuqiang   hahhaha ] bit->2   data -> %02X",g_send_data[4]);
-     //printf16(g_send_data,sizeof(g_send_data));
+	//printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;
@@ -292,8 +291,7 @@ int handle_coolingSwitch_cmd(bool *coolingSwitch)
 			g_send_data[10] = 0xC0;
     }
 	uart0_send_data(g_send_data,sizeof(g_send_data));
-	//printf(" [Test wangshuqiang   hahhaha ] bit->2   data -> %02X",g_send_data[10]);
-
+    //printf16(g_send_data,sizeof(g_send_data));
     /* 若同步操作改变设备状态, 状态改变后, 返回HILINK_OK */
     /* 若异步操作改变设备状态, 此处返回HILINK_PROCESSING, 待状态改变后主动上报新状态 */
     return HILINK_OK;

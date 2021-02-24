@@ -27,7 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "hilink.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "uart.h"
